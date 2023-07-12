@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Home</title>
+</head>
+<body>
+<p class="h1 d-flex justify-content-center d-inline p-2">User Information</p>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Password</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of data">
+
+    <td>{{user.name}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.password}}</td>
+    <td><button class="btn btn-danger" (click)="DeleteUser(user.id)">Delete</button></td>
+  </tr>
+
+  </tbody>
+</table>
+</body>
+</html>

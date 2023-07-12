@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login</title>
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="row">
+  <div class="mx-auto col-10 col-md-8 col-lg-6">
+    <form [formGroup]="group"  (ngSubmit)="submit(group.value)">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input formControlName="email" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <p class="alert alert-danger p-1" *ngIf="group.get('email')?.hasError('required') && group.get('email')?.touched && group.get('email')?.dirty ">email is required</p>
+        <p class="alert alert-danger p-1" *ngIf="group.get('email')?.hasError('email') && group.get('email')?.touched && group.get('email')?.dirty ">email is invalid</p>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input formControlName="password"  name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <p class="alert alert-danger p-1" *ngIf="group.get('password')?.errors?.['required'] && group.get('password')?.touched && group.get('password')?.dirty ">password is required</p>
+        <p class="alert alert-danger p-1" *ngIf="group.get('password')?.errors?.['minlength'] && group.get('password')?.touched && group.get('password')?.dirty ">Minimum length of password is 8</p>
+      </div><br>
+      <p class="alert alert-danger p1" *ngIf="group.errors?.['error']==false">This user does not exist</p>
+      <button  type="submit" class="btn btn-primary mx-2">Login</button>
+      <button type="button" class="btn btn-primary" (click)="SignUp()">Sign up</button>
+
+    </form>
+  </div>
+</div>
+</body>
+</html>
+
